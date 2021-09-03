@@ -1,11 +1,10 @@
 import Flex from "@/components/Flex";
 import Logo from "@/components/Logo";
 import Spacer from "@/components/Spacer";
-import Image from "next/image";
+
 import Link from "next/link";
 import styled from "styled-components";
-import appStore from "../../public/apple-badge-en.png";
-import googlePlay from "../../public/google-badge-en.png";
+
 const JoinUsLeftSide = () => {
   return (
     <LeftSide>
@@ -17,18 +16,22 @@ const JoinUsLeftSide = () => {
           <h1>Your favourite shops and takeaways, delivered to your door.</h1>
           <Spacer size={60} />
           <Flex justify="space-evenly" items="center">
-            <Image
-              src={appStore}
+            <img
+              src="/apple-badge-en.png"
               alt="Download on App Store"
-              width={200}
-              height={75}
+              style={{
+                width: "200px",
+                height: "75px",
+              }}
             />
-            {/* <Spacer size={20} /> */}
-            <Image
-              src={googlePlay}
+
+            <img
+              src="/google-badge-en.png"
               alt="Download on Google play"
-              width={200}
-              height={75}
+              style={{
+                width: "200px",
+                height: "75px",
+              }}
             />
           </Flex>
         </div>

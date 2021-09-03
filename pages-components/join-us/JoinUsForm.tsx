@@ -5,10 +5,8 @@ import Input from "@/components/Input";
 import MagicRainbowButton from "@/components/MagicRainbowButton";
 import Paragraph from "@/components/Paragraph";
 import Spacer from "@/components/Spacer";
-import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
-import donutImage from "../../public/donut.png";
 
 const JoinUsForm = () => {
   const [checked, setChecked] = useState(false);
@@ -52,7 +50,7 @@ const JoinUsForm = () => {
           <MagicRainbowButton>SUBMIT</MagicRainbowButton>
         </Flex>
         <Donut>
-          <Image src={donutImage} alt="rotating-donut" />
+          <img src="/donut.png" alt="rotating-donut" />
         </Donut>
       </FormContainer>
     </Wrapper>

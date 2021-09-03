@@ -1,9 +1,8 @@
-import Image from "next/image";
 import styled from "styled-components";
 import logo from "../../public/newLogo.png";
 
-const Logo = styled(Image).attrs(() => ({
-  src: logo,
+const Logo = styled.img.attrs(() => ({
+  src: "/newLogo.png",
   alt: "Sweetat logo",
   layout: "fill",
 }))``;
