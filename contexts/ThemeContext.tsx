@@ -25,20 +25,19 @@ const ThemeProvider: React.FC = ({ children }) => {
     // Because colors matter so much for the initial page view, we're
     // doing a lot of the work in gatsby-ssr. That way it can happen before
     // the React component tree mounts.
-    initialColorValue =
-      root.style.getPropertyValue(PREFERS_DARK_CSS_PROP) === "true"
-        ? "dark"
-        : "light";
+    initialColorValue = root.style.getPropertyValue("--initial-color-mode") as
+      | "light"
+      | "dark";
   }
   const [colorMode, rawSetColorMode] = useState(initialColorValue);
-  console.log(colorMode);
+
   const value = useMemo(() => {
     const setColorMode = (value: "dark" | "light") => {
       console.log(value);
       let root = window.document.documentElement;
 
       const prefersDark = value === "dark" ? "true" : "false";
-      root.style.setProperty(PREFERS_DARK_CSS_PROP, prefersDark);
+
       const newColors = prefersDark === "true" ? DARK_COLORS : LIGHT_COLORS;
       Object.entries(newColors).forEach(([name, colorByTheme]) => {
         const cssVarName = "--color-" + name;

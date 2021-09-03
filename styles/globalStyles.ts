@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle(
   box-sizing: border-box;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Maven Pro', sans-serif;
   
 }
 
@@ -104,17 +105,8 @@ button {
 ul {
   list-style-type:none;
 }  
-input , textarea {
- min-width:0;
- transition:200ms all ease;
- &:hover {
 
-  border-color:var(--color-secondary) !important;
- }
-}
-input:focus, textarea:focus {
-  border-color:var(--color-secondary) !important;
-}
+
 
 
 /* CUSTOM STYLES   */
@@ -203,6 +195,9 @@ input:focus, textarea:focus {
 }
 [data-reach-accordion-button] {
   color:inherit;
+}
+[data-reach-custom-checkbox-container] {
+  margin-right:0;
 }
 
 

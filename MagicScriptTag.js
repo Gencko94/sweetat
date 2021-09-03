@@ -8,7 +8,8 @@ export const MagicScriptTag = () => {
     dangerRed: "#b72b2b",
     border: "1px solid rgba(0,0,0,0.1)",
     borderHovered: "rgba(0,0,0,0.3)",
-
+    primary: "hsl(31, 100%, 60%)",
+    secondary: "hsl(248, 54%, 49%)",
     text: "#252525",
     textContrast: "#fff",
     textAlt: "#737373",
@@ -17,12 +18,12 @@ export const MagicScriptTag = () => {
   LIGHT_COLORS.subtleFloating = "hsl(0, 0%, 100%)";
   LIGHT_COLORS.subtleBackground = "hsl(0, 4%, 99%)";
 
-  LIGHT_COLORS.sidebarBackground = "hsl(210deg, 22%, 15%)";
-  LIGHT_COLORS.sidebarSubtleBackground = "hsl(210,30%,8%)";
+ 
 
   const DARK_COLORS = {
     background: "hsl(210,30%,8%)",
-
+    primary: "rgb(250, 66, 140)",
+    secondary: "hsla(222, 100%, 58%, 1)",
     shadow: "none",
     errorShadow: "0px 0px 10px 0px #b72b2b",
     green: "#1AD439",
@@ -32,7 +33,7 @@ export const MagicScriptTag = () => {
 
     text: "#fff",
     textContrast: "#252525",
-    textAlt: "#ececec",
+    textAlt: "#bdbdbd",
     textAltContrast: "#fbfbfb",
   };
 
@@ -40,19 +41,20 @@ export const MagicScriptTag = () => {
 
   DARK_COLORS.subtleFloating = "hsl(210, 22%, 15%)";
 
-  DARK_COLORS.sidebarBackground = "hsl(210, 22%, 15%)";
-  DARK_COLORS.sidebarSubtleBackground = DARK_COLORS.subtleBackground;
+ 
  
 
   
   (function() {
     function getInitialColorMode() {
-      const persistedColorPreference = window.localStorage.getItem('color-mode');
+      const persistedColorPreference = window.localStorage.getItem('prefers-dark');
       const hasPersistedPreference = typeof persistedColorPreference === 'string';
       // If the user has explicitly chosen light or dark,
       // let's use it. Otherwise, this value will be null.
       if (hasPersistedPreference) {
-        return persistedColorPreference;
+
+        
+        return persistedColorPreference ==="true" ? "dark" : "light";
       }
       // If they haven't been explicit, let's check the media
       // query
@@ -79,7 +81,7 @@ export const MagicScriptTag = () => {
         console.log(error);
     }
    
-    
+    root.style.setProperty('--border-radius', '10px');
     root.style.setProperty('--initial-color-mode', colorMode);
   })()`;
   // eslint-disable-next-line react/no-danger

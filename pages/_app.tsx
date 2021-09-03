@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import ThemeProvider from "../contexts/ThemeContext";
 import GlobalStyle from "../styles/globalStyles";
-
+import "../styles/animations.css";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

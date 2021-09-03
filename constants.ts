@@ -10,12 +10,12 @@ export const LIGHT_COLORS: { [key: string]: string } = {
   textContrast: "#fff",
   textAlt: "#737373",
   textAltContrast: "#fbfbfb",
+  primary: "hsl(31, 100%, 60%)",
+  secondary: "hsl(248, 54%, 49%)",
 };
 LIGHT_COLORS.subtleFloating = "hsl(0, 0%, 100%)";
 LIGHT_COLORS.subtleBackground = "hsl(0, 4%, 99%)";
 
-LIGHT_COLORS.sidebarBackground = "hsl(210deg, 22%, 15%)";
-LIGHT_COLORS.sidebarSubtleBackground = "hsl(210,30%,8%)";
 export const DARK_COLORS: { [key: string]: string } = {
   background: "hsl(210,30%,8%)",
 
@@ -27,16 +27,15 @@ export const DARK_COLORS: { [key: string]: string } = {
   borderHovered: "rgba(255,255,255,0.7)",
   text: "#fff",
   textContrast: "#252525",
-  textAlt: "#ececec",
+  textAlt: "#bdbdbd",
   textAltContrast: "#fbfbfb",
+  primary: "rgb(250, 66, 140)",
+  secondary: "hsla(222, 100%, 58%, 1)",
 };
 
 DARK_COLORS.subtleBackground = "hsl(210, 22%, 25%)";
 
 DARK_COLORS.subtleFloating = "hsl(210, 22%, 15%)";
-
-DARK_COLORS.sidebarBackground = "hsl(210, 22%, 15%)";
-DARK_COLORS.sidebarSubtleBackground = DARK_COLORS.subtleBackground;
 
 // This key is used in localStorage to remember theme preferences
 
@@ -46,6 +45,15 @@ export const PREFERS_DARK_CSS_PROP = `--${PREFERS_DARK_KEY}`;
 export const up = (breakpoint: string) => `@media (min-width: ${breakpoint})`;
 export const down = (breakpoint: string) => `@media (max-width: ${breakpoint})`;
 
+export type COLORS =
+  | "primary"
+  | "secondary"
+  | "text"
+  | "textContrast"
+  | "textAlt"
+  | "textAltContrast";
+export type WEIGHTS = "light" | "regular" | "semibold" | "bold" | "xbold";
+
 export interface Sizes {
   xs: string;
   md: string;
@@ -53,26 +61,63 @@ export interface Sizes {
   xl: string;
 }
 
+// const size: Sizes = {
+//   xs: "320px",
+//   md: "768px",
+//   lg: "1100px",
+//   xl: "1366px",
+// };
+export const BREAKPOINT_SIZES = {
+  xs: 320,
+  sm: 563,
+  md: 768,
+  lg: 1024,
+  xl: 1440,
+};
+// export const BREAKPOINTS: Devices = {
+//   xs: size.xs,
+//   md: size.md,
+//   lg: size.lg,
+//   xl: size.xl,
+// };
 export interface Devices {
   xs: string;
+  sm: string;
   md: string;
   lg: string;
   xl: string;
+  xsAndSmaller: string;
+  smAndSmaller: string;
+  mdAndSmaller: string;
+  lgAndSmaller: string;
+  xlAndSmaller: string;
+  xsAndLarger: string;
+  smAndLarger: string;
+  mdAndLarger: string;
+  lgAndLarger: string;
+  xlAndLarger: string;
+  mobile: string;
+  desktop: string;
 }
-const size: Sizes = {
-  xs: "320px",
-  md: "768px",
-  lg: "1100px",
-  xl: "1366px",
-};
-
 export const BREAKPOINTS: Devices = {
-  xs: size.xs,
-  md: size.md,
-  lg: size.lg,
-  xl: size.xl,
+  xs: `(max-width: ${BREAKPOINT_SIZES.xs}px)`,
+  sm: `(min-width: ${BREAKPOINT_SIZES.xs}px and max-width: ${BREAKPOINT_SIZES.sm}px)`,
+  md: `(min-width: ${BREAKPOINT_SIZES.sm}px and max-width: ${BREAKPOINT_SIZES.md}px)`,
+  lg: `(min-width: ${BREAKPOINT_SIZES.md}px and max-width: ${BREAKPOINT_SIZES.lg}px)`,
+  xl: `(min-width: ${BREAKPOINT_SIZES.lg}px and max-width: ${BREAKPOINT_SIZES.xl}px)`,
+  xsAndSmaller: `(max-width: ${BREAKPOINT_SIZES.xs}px)`,
+  smAndSmaller: `(max-width: ${BREAKPOINT_SIZES.sm}px)`,
+  mdAndSmaller: `(max-width: ${BREAKPOINT_SIZES.md}px)`,
+  lgAndSmaller: `(max-width: ${BREAKPOINT_SIZES.lg}px)`,
+  xlAndSmaller: `(max-width: ${BREAKPOINT_SIZES.xl}px)`,
+  xsAndLarger: `(min-width: ${BREAKPOINT_SIZES.xs + 1}px)`,
+  smAndLarger: `(min-width: ${BREAKPOINT_SIZES.sm + 1}px)`,
+  mdAndLarger: `(min-width: ${BREAKPOINT_SIZES.md + 1}px)`,
+  lgAndLarger: `(min-width: ${BREAKPOINT_SIZES.lg + 1}px)`,
+  xlAndLarger: `(min-width: ${BREAKPOINT_SIZES.xl + 1}px)`,
+  mobile: `(max-width: ${BREAKPOINT_SIZES.md}px)`,
+  desktop: `(min-width: ${BREAKPOINT_SIZES.md + 1}px)`,
 };
-
 export const THEME = {
   breakpoints: BREAKPOINTS,
   font: {
