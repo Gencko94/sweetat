@@ -71,7 +71,7 @@ const LeftSide = styled.div`
     content: " ";
     inset: 0;
     opacity: 0.4;
-    background-image: url("vendor-bg.jpg");
+    background-image: url("/vendor-bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
