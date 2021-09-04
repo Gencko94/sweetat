@@ -56,11 +56,11 @@ const SectionTitle = styled.h1`
 `;
 
 const SmallTitle = styled.h1`
-  font-size: 18px;
+  font-size: 20px;
 
   font-weight: ${(props) => props.theme.font.semibold};
   @media ${(props) => props.theme.breakpoints.mdAndLarger} {
-    font-size: 20px;
+    font-size: 22px;
   }
 `;
 const MediumTitle = styled.h1`
@@ -82,12 +82,12 @@ const LargeTitle = styled.h1`
   }
 `;
 const MajorHeading = styled.h1`
-  font-size: 25px;
+  font-size: 30px;
   color: var(--color-primary);
   margin-top: 16px;
   margin-bottom: 16px;
   @media ${(props) => props.theme.breakpoints.mdAndLarger} {
-    font-size: 32px;
+    font-size: 40px;
   }
 `;
 const NormalHeading = styled.h1`

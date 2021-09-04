@@ -8,15 +8,20 @@ const LanguageToggle = () => {
   }
   return (
     <button
+      style={{ color: "#fff" }}
       onClick={() => {
         if (i18n.language === "ar") {
           handleChangeLanguage("en");
+          document.documentElement.setAttribute("dir", "ltr");
+          document.documentElement.setAttribute("lang", "en");
         } else {
           handleChangeLanguage("ar");
+          document.documentElement.setAttribute("lang", "ar");
+          document.documentElement.setAttribute("dir", "rtl");
         }
       }}
     >
-      {i18n.language === "ar" ? "EN" : "AR"}
+      {ready && i18n.language === "ar" ? "EN" : "AR"}
     </button>
   );
 };

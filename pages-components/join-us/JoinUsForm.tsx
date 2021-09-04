@@ -9,7 +9,9 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import Link from "next/link";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { GetStaticProps } from "next";
+import { JoinUsHeader } from "./JoinUsHeader";
 const JoinUsForm = () => {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
@@ -18,6 +20,9 @@ const JoinUsForm = () => {
   };
   return (
     <Wrapper>
+      <div className="header-wrapper">
+        <JoinUsHeader />
+      </div>
       <FormContainer className="join-us-form">
         <Heading tag="h2" type="normal-heading">
           {t("form-title")}
@@ -45,21 +50,19 @@ const JoinUsForm = () => {
             <Checkbox checked={checked} handleCheck={handleCheck} />
           </span>
           <Spacer size={20} />
-          {/* <Trans
-            i18nKey="common:tos"
-            components={[
-              <Link href="tos" key={"tos"}>
-                <a className="tos"></a>
-              </Link>,
-            ]}
-          /> */}
+          <Trans i18nKey="common:tos">
+            I agree to all statements included in
+            <a className="tos" href="/tos">
+              TOS
+            </a>
+          </Trans>
         </Flex>
         <Spacer size={20} />
         <Flex justify="center">
           <MagicRainbowButton>SUBMIT</MagicRainbowButton>
         </Flex>
         <Donut>
-          <img src="/donut.png" alt="rotating-donut" />
+          <img src="/assets/donut.png" alt="rotating-donut" />
         </Donut>
       </FormContainer>
     </Wrapper>
@@ -67,6 +70,7 @@ const JoinUsForm = () => {
 };
 
 export default JoinUsForm;
+
 const Wrapper = styled.div`
   padding: 3rem;
   .tos {
@@ -77,8 +81,14 @@ const Wrapper = styled.div`
       text-decoration: underline;
     }
   }
+  .header-wrapper {
+    display: none;
+  }
   @media ${(props) => props.theme.breakpoints.smAndSmaller} {
-    padding: 2rem;
+    .header-wrapper {
+      display: block;
+    }
+    padding: 0 1rem;
   }
 `;
 const FormContainer = styled.div`

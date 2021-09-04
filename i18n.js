@@ -1,12 +1,10 @@
 import i18n from "i18next";
-import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
-
+const english = require("./locales/en/common.json");
+const arabic = require("./locales/ar/common.json");
 i18n
-  // load translation using http -> see /public/locales
-  // learn more: https://github.com/i18next/i18next-http-backend
-  .use(Backend)
+
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
@@ -17,10 +15,31 @@ i18n
   .init({
     // debug: process.env.NODE_ENV === 'development',
     debug: false,
-    fallbackLng: "en",
+    detection: {
+      order: [
+        "localStorage",
+        "querystring",
+        "cookie",
+        "sessionStorage",
+        "navigator",
+        "htmlTag",
+        "path",
+        "subdomain",
+      ],
+    },
+    fallbackLng: "ar",
     defaultNS: "common",
     fallbackNS: "common",
-    supportedLngs: ["en", "ar"],
+    supportedLngs: ["ar", "en"],
+    resources: {
+      en: {
+        common: english,
+      },
+      ar: {
+        common: arabic,
+      },
+    },
+
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
@@ -29,5 +48,6 @@ i18n
       useSuspense: false,
     },
   });
-
+// i18n.addResourceBundle("en", "common", english);
+// i18n.addResourceBundle("ar", "common", arabic);
 export default i18n;

@@ -6,64 +6,37 @@ import Spacer from "@/components/Spacer";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { JoinUsHeader } from "./JoinUsHeader";
 
 const JoinUsLeftSide = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation();
   return (
     <LeftSide>
       <section>
-        <Flex justify="space-between" items="center">
-          <div className="logo-container">
-            <Logo />
-          </div>
-          <LanguageToggle />
-        </Flex>
+        <JoinUsHeader />
         <div className="title-container">
           <h1>{t("main-title")}</h1>
           <Spacer size={60} />
-          <Flex justify="space-evenly" items="center">
-            <img
-              src="/apple-badge-en.png"
-              alt="Download on App Store"
-              style={{
-                width: "200px",
-                height: "75px",
-              }}
-            />
-
-            <img
-              src="/google-badge-en.png"
-              alt="Download on Google play"
-              style={{
-                width: "200px",
-                height: "75px",
-              }}
-            />
-          </Flex>
         </div>
-        <NavLinks>
-          <Flex as="ul" items="center" justify="space-between">
-            <li>
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/about">
-                <a>About Us</a>
-              </Link>
-            </li>
-            <Link href="/faq">
-              <a>FAQ</a>
-            </Link>
-            <Link href="/tos">
-              <a>Terms & Conditions</a>
-            </Link>
-            <Link href="/tos">
-              <a>Careers</a>
-            </Link>
-          </Flex>
-        </NavLinks>
+        <Flex justify="flex-start" items="center">
+          <img
+            src="/assets/apple-badge-en.png"
+            alt="Download on App Store"
+            style={{
+              width: "150px",
+              height: "60px",
+            }}
+          />
+
+          <img
+            src="/assets/google-badge-en.png"
+            alt="Download on Google play"
+            style={{
+              width: "150px",
+              height: "60px",
+            }}
+          />
+        </Flex>
       </section>
     </LeftSide>
   );
@@ -77,7 +50,7 @@ const LeftSide = styled.div`
     content: " ";
     inset: 0;
     opacity: 0.4;
-    background-image: url("/vendor-bg.jpg");
+    background-image: url("/assets/vendor-bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -91,12 +64,6 @@ const LeftSide = styled.div`
     margin: 0 auto;
     height: 100%;
 
-    .logo-container {
-      height: 125px;
-      width: 250px;
-      position: relative;
-      display: inline-block;
-    }
     .title-container {
       margin: 7rem 0;
       flex: 1;
@@ -109,14 +76,5 @@ const LeftSide = styled.div`
   }
   @media ${(props) => props.theme.breakpoints.smAndSmaller} {
     display: none;
-  }
-`;
-const NavLinks = styled.nav`
-  margin: 1rem 0 3rem 0;
-  a {
-    transition: 100ms color ease-in;
-  }
-  a:hover {
-    color: var(--color-primary) !important;
   }
 `;

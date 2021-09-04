@@ -2,9 +2,12 @@ import styled from "styled-components";
 
 import JoinUsLeftSide from "pages-components/join-us/JoinUsLeftSide";
 import JoinUsForm from "pages-components/join-us/JoinUsForm";
+import { Meta } from "@/components/Meta";
+import { AppConfig } from "utils/AppConfig";
 const JoinUsPage = () => {
   return (
     <Wrapper>
+      <Meta title={AppConfig.title} description={AppConfig.description} />
       <JoinUsLeftSide />
       <JoinUsForm />
     </Wrapper>

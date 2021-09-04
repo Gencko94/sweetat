@@ -46,6 +46,28 @@ export const MagicScriptTag = () => {
 
   
   (function() {
+    const root = document.documentElement;
+    // i18n prefs
+    const persistedLanguage = window.localStorage.getItem("i18nextLng");
+    console.log(persistedLanguage)
+    try {
+      if (typeof persistedLanguage === "string") {
+        if (persistedLanguage === "ar") {
+          root.setAttribute("dir", "rtl");
+          root.setAttribute("lang", "ar");
+        } else if (persistedLanguage === "en") {
+          root.setAttribute("dir", "ltr");
+          root.setAttribute("lang", "en");
+        }
+      } else {
+        root.setAttribute("dir", "rtl");
+        
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+
     function getInitialColorMode() {
       const persistedColorPreference = window.localStorage.getItem('prefers-dark');
       const hasPersistedPreference = typeof persistedColorPreference === 'string';
@@ -69,21 +91,24 @@ export const MagicScriptTag = () => {
     }
     const colorMode = getInitialColorMode();
     const COLORS =  colorMode ==='light' ? LIGHT_COLORS : DARK_COLORS;
-    const root = document.documentElement;
+   
     try {
-
       Object.entries(COLORS).forEach(([name, colorByTheme]) => {
-      
-        const cssVarName = '--color-' + name;
+        const cssVarName = "--color-" + name;
         root.style.setProperty(cssVarName, colorByTheme);
       });
-    } catch(error) {
-        console.log(error);
+    } catch (error) {
+      console.log(error);
     }
+    
    
     root.style.setProperty('--border-radius', '10px');
     root.style.setProperty('--initial-color-mode', colorMode);
+   
+    
+    
   })()`;
   // eslint-disable-next-line react/no-danger
+
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
 };
