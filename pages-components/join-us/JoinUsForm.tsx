@@ -8,7 +8,10 @@ import Spacer from "@/components/Spacer";
 import { useState } from "react";
 import styled from "styled-components";
 
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 const JoinUsForm = () => {
+  const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
   const handleCheck = () => {
     setChecked(!checked);
@@ -17,20 +20,19 @@ const JoinUsForm = () => {
     <Wrapper>
       <FormContainer className="join-us-form">
         <Heading tag="h2" type="normal-heading">
-          Are you a restaurant owner and wish to join hundrends of sweets
-          restaurants from around the Kuwait ?
+          {t("form-title")}
         </Heading>
         <Paragraph color="textAlt" weight="light">
-          Provide your restaurant information and we will contact you soon.
+          {t("form-subtitle")}
         </Paragraph>
         <Spacer size={40} />
-        <Input label="Restaurant Name" />
+        <Input label={t("business-name")} />
         <Spacer size={20} />
-        <Input label="Phone Number" />
+        <Input label={t("phone-number")} />
         <Spacer size={20} />
-        <Input label="Instagram " />
+        <Input label={t("instagram")} />
         <Spacer size={20} />
-        <Input label="Email " />
+        <Input label={t("email")} />
         <Spacer size={40} />
         <Flex as="label" items="center" justify="center">
           <span
@@ -42,8 +44,15 @@ const JoinUsForm = () => {
           >
             <Checkbox checked={checked} handleCheck={handleCheck} />
           </span>
-          <Spacer size={20} />I agree to all statements included in Terms Of
-          Use.
+          <Spacer size={20} />
+          {/* <Trans
+            i18nKey="common:tos"
+            components={[
+              <Link href="tos" key={"tos"}>
+                <a className="tos"></a>
+              </Link>,
+            ]}
+          /> */}
         </Flex>
         <Spacer size={20} />
         <Flex justify="center">
@@ -60,6 +69,14 @@ const JoinUsForm = () => {
 export default JoinUsForm;
 const Wrapper = styled.div`
   padding: 3rem;
+  .tos {
+    color: var(--color-primary);
+    margin: 0 7px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   @media ${(props) => props.theme.breakpoints.smAndSmaller} {
     padding: 2rem;
   }

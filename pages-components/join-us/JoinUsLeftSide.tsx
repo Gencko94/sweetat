@@ -1,19 +1,25 @@
 import Flex from "@/components/Flex";
+import LanguageToggle from "@/components/LanguageToggle";
 import Logo from "@/components/Logo";
 import Spacer from "@/components/Spacer";
 
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 const JoinUsLeftSide = () => {
+  const { t } = useTranslation("common");
   return (
     <LeftSide>
       <section>
-        <div className="logo-container">
-          <Logo />
-        </div>
+        <Flex justify="space-between" items="center">
+          <div className="logo-container">
+            <Logo />
+          </div>
+          <LanguageToggle />
+        </Flex>
         <div className="title-container">
-          <h1>Your favourite shops and takeaways, delivered to your door.</h1>
+          <h1>{t("main-title")}</h1>
           <Spacer size={60} />
           <Flex justify="space-evenly" items="center">
             <img
