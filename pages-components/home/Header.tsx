@@ -4,7 +4,7 @@ import Logo from "@/components/Logo";
 import React from "react";
 import styled from "styled-components";
 
-export const JoinUsHeader = () => {
+export const Header = () => {
   return (
     <Wrapper justify="space-between" items="center">
       <div className="logo-container">
@@ -14,6 +14,7 @@ export const JoinUsHeader = () => {
     </Wrapper>
   );
 };
+export default Header;
 const Wrapper = styled(Flex)`
   .logo-container {
     height: 75px;

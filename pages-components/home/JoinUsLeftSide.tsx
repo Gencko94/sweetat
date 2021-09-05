@@ -6,37 +6,20 @@ import Spacer from "@/components/Spacer";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { JoinUsHeader } from "./JoinUsHeader";
+import Header from "./Header";
+import MobileStoreLinks from "./MobileStoreLinks";
 
 const JoinUsLeftSide = () => {
   const { t } = useTranslation();
   return (
     <LeftSide>
       <section>
-        <JoinUsHeader />
+        <Header />
         <div className="title-container">
           <h1>{t("main-title")}</h1>
           <Spacer size={60} />
         </div>
-        <Flex justify="flex-start" items="center">
-          <img
-            src="/assets/apple-badge-en.png"
-            alt="Download on App Store"
-            style={{
-              width: "150px",
-              height: "60px",
-            }}
-          />
-
-          <img
-            src="/assets/google-badge-en.png"
-            alt="Download on Google play"
-            style={{
-              width: "150px",
-              height: "60px",
-            }}
-          />
-        </Flex>
+        <MobileStoreLinks />
       </section>
     </LeftSide>
   );

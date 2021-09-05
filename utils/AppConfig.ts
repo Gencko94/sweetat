@@ -1,6 +1,6 @@
 export const AppConfig = {
   site_name: "Sweetat",
-  title: "Sweetat | Join us",
+  title: "Sweetat",
   description:
-    "Partner with Sweetat and join hundreds of business from around the Kuwait ",
+    "Your favourite shops and takeaways, delivered to your door. Partner with Sweetat and join hundreds of business from around the Kuwait ",
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Checkbox from "@/components/Checkbox";
 import Flex from "@/components/Flex";
 import Heading from "@/components/Heading";
@@ -8,10 +9,10 @@ import Spacer from "@/components/Spacer";
 import { useState } from "react";
 import styled from "styled-components";
 
-import Link from "next/link";
 import { Trans, useTranslation } from "react-i18next";
-import { GetStaticProps } from "next";
-import { JoinUsHeader } from "./JoinUsHeader";
+
+import Header from "./Header";
+import MobileStoreLinks from "./MobileStoreLinks";
 const JoinUsForm = () => {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
@@ -21,7 +22,7 @@ const JoinUsForm = () => {
   return (
     <Wrapper>
       <div className="header-wrapper">
-        <JoinUsHeader />
+        <Header />
       </div>
       <FormContainer className="join-us-form">
         <Heading tag="h2" type="normal-heading">
@@ -50,12 +51,14 @@ const JoinUsForm = () => {
             <Checkbox checked={checked} handleCheck={handleCheck} />
           </span>
           <Spacer size={20} />
-          <Trans i18nKey="common:tos">
-            I agree to all statements included in
-            <a className="tos" href="/tos">
-              TOS
-            </a>
-          </Trans>
+          <span>
+            <Trans i18nKey="common:tos">
+              I agree to all statements included in
+              <a className="tos" href="/tos">
+                TOS
+              </a>
+            </Trans>
+          </span>
         </Flex>
         <Spacer size={20} />
         <Flex justify="center">
@@ -65,6 +68,9 @@ const JoinUsForm = () => {
           <img src="/assets/donut.png" alt="rotating-donut" />
         </Donut>
       </FormContainer>
+      <div className="footer-wrapper">
+        <MobileStoreLinks />
+      </div>
     </Wrapper>
   );
 };
@@ -75,30 +81,38 @@ const Wrapper = styled.div`
   padding: 3rem;
   .tos {
     color: var(--color-primary);
-    margin: 0 7px;
     cursor: pointer;
     &:hover {
       text-decoration: underline;
     }
   }
-  .header-wrapper {
+  .header-wrapper,
+  .footer-wrapper {
     display: none;
   }
   @media ${(props) => props.theme.breakpoints.smAndSmaller} {
     .header-wrapper {
+      margin-bottom: 1rem;
       display: block;
     }
-    padding: 0 1rem;
+    .footer-wrapper {
+      display: block;
+
+      margin: 2rem 0;
+    }
+    padding: 0 2rem;
   }
 `;
 const FormContainer = styled.div`
   background-color: var(--color-subtleFloating);
   padding: 2rem 1.5rem;
   border-radius: var(--border-radius);
+  position: relative;
+
   @media ${(props) => props.theme.breakpoints.smAndSmaller} {
     padding: 1rem;
   }
-  /* position: relative;
+
   &::before,
   &::after {
     content: "";
@@ -112,8 +126,10 @@ const FormContainer = styled.div`
       cyan,
       hsl(8deg 94% 66%)
     );
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
+    inset: 0;
+
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
     background-size: 400%;
     z-index: -1;
     transform: translateZ(0);
@@ -122,17 +138,19 @@ const FormContainer = styled.div`
   }
   &::after {
     filter: blur(10px);
-  } */
+  }
 `;
 const Donut = styled.div`
-  width: 70px;
+  width: 60px;
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: -30px;
+  top: -30px;
   img {
     animation: rotate 20s linear infinite;
   }
   @media ${(props) => props.theme.breakpoints.smAndSmaller} {
-    width: 50px;
+    width: 45px;
+    right: -22px;
+    top: -22px;
   }
 `;

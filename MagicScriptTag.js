@@ -60,7 +60,9 @@ export const MagicScriptTag = () => {
           root.setAttribute("lang", "en");
         }
       } else {
+        window.localStorage.setItem("i18nextLng","ar")
         root.setAttribute("dir", "rtl");
+        root.setAttribute("lang", "ar");
         
       }
     } catch (error) {

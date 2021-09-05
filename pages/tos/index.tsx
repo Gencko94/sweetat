@@ -200,12 +200,13 @@ const index = () => {
 
 export default index;
 const Wrapper = styled.div`
+  direction: ltr;
   .logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: 0 -20px;
+
     img {
       height: 75px;
       width: 150px;

@@ -32,11 +32,11 @@ i18n
     fallbackNS: "common",
     supportedLngs: ["ar", "en"],
     resources: {
-      en: {
-        common: english,
-      },
       ar: {
         common: arabic,
+      },
+      en: {
+        common: english,
       },
     },
 
