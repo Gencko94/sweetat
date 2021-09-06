@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import Checkbox from "@/components/Checkbox";
 import Flex from "@/components/Flex";
@@ -62,7 +63,7 @@ const JoinUsForm = () => {
         </Flex>
         <Spacer size={20} />
         <Flex justify="center">
-          <MagicRainbowButton>SUBMIT</MagicRainbowButton>
+          <MagicRainbowButton>{t`submit-btn`}</MagicRainbowButton>
         </Flex>
         <Donut>
           <img src="/assets/donut.png" alt="rotating-donut" />

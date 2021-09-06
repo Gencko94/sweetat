@@ -21,7 +21,7 @@ const LanguageToggle = () => {
         }
       }}
     >
-      {ready && i18n.language === "ar" ? "EN" : "AR"}
+      {ready && i18n.language === "ar" ? "English" : "عربي"}
     </button>
   );
 };

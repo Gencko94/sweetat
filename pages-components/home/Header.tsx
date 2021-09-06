@@ -19,14 +19,18 @@ const Wrapper = styled(Flex)`
   .logo-container {
     height: 75px;
     width: 150px;
+    min-width: 150px;
     position: relative;
-    display: inline-block;
     margin: 0 -20px;
+    margin-left: calc(100vw - 70%);
+    transform: translateX(-57%);
   }
   @media ${(props) => props.theme.breakpoints.smAndLarger} {
     .logo-container {
       height: 125px;
       width: 250px;
+      margin-left: unset;
+      transform: translateX(0);
     }
   }
 `;
